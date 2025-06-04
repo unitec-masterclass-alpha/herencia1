@@ -13,13 +13,16 @@ class Person {
 private:
 	char* _name;
 	unsigned int _age;
+	char _id[6];
 public:
 	Person(const string& name, unsigned int age);
+	Person(const string& name, const string& id, unsigned int age);
 	virtual ~Person();
 	Person(const Person& person);
 	Person& operator=(const Person& person);
 	virtual string ToString()const;
 	void Birthday();
+	string GetID()const;
 };
 
 

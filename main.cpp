@@ -7,30 +7,36 @@
 using std::cout;
 using std::endl;
 int main() {
-	Person p("Pamela", 19);
-	Student c("Cesar", 20, "Publicidad", 99);
-	Professor d("Carlos", 35, "Ing. Sistemas", 30000);
+	Person* p[3];
+	p[0] = new Person("Juan", "ABC12", 20);
+	p[1] = new Student("Jean", 20, "Industrial");
+	p[2] = new Professor("Jenny", 33, "Psycho", 20000);
 
-	cout << p.ToString() << endl;
-	cout << c.ToString() << endl;
-	cout << d.ToString() << endl;
+	for (int i=0; i<3; i++)
+		cout << p[i]->GetID() << endl;
 
-	cout << string(80, '-') << endl;
+	//cout << "EL GPA DE Jean es: " << b->GetGPA() << endl;
+	
+	for (int i=0; i<3; i++){
+		Student* s = dynamic_cast<Student*>(p[i]);
+		if (s != nullptr){
+			cout << s->GetGPA() << endl;
+		}else{
+			Professor* r = dynamic_cast<Professor*>(p[i]);
+			if (r != nullptr){
+				cout << r->Raise(0) << endl;
+			}else{
+				cout << "Solo es person" << endl;
+			}
+		}
+		
+	}
 
-	// Pasar person como parametro por valor y por referencia a una funcion
-	// Usar STL vector o list o map ?
-	// Git... branches y pull requests
-	Person* a = new Person("Lisbeth", 18);
-	Person* b = new Student("Ariel", 18, "Turismo", 85);
-	Person* e = new Professor("Mini Me", 40, "Computer Science", 50000);
 
-	cout << a->ToString() << endl; // Static Binding
-	cout << b->ToString() << endl;
-	cout << e->ToString() << endl;
 
-	delete a;
-	delete b;
-	delete e;
+	
+	for (int i=0; i<3; i++)
+		delete p[i];
 
 	return 0;
 }
