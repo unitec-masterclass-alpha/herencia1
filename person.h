@@ -16,7 +16,7 @@ private:
 	char _id[6];
 public:
 	Person(const string& name, unsigned int age);
-	Person(const string& name, const string& id, usinged int age);
+	Person(const string& name, const string& id, unsigned int age);
 	virtual ~Person();
 	Person(const Person& person);
 	Person& operator=(const Person& person);
