@@ -48,6 +48,9 @@ string Person::ToString() const {
 	ss << "Name: " << _name << " Age: " << _age;
 	return ss.str();
 }
+string Person::GetID()const{
+	return string(_id);
+}
 
 void Person::Birthday() {
 	_age++;
